@@ -38,7 +38,7 @@ export class AddTaskComponent implements OnInit {
       reminder: this.reminder
     }
 
-    // toDo emit event
+    // TO DO EMIT EVENT
     this.onAddTask.emit(newTask)
     this.text = ''
     this.day = ''

@@ -5,9 +5,9 @@ import { Task } from '../Task';
 
 // import { TASKS } from '../mock-tasks';
 
-const httpOptions ={
-  headers : new HttpHeaders({
-    'content-Type':'application/json'
+const httpOptions = {
+  headers: new HttpHeaders({
+    'content-Type': 'application/json'
   })
 }
 
@@ -20,23 +20,32 @@ export class TaskService {
 
   constructor(private http: HttpClient) { }
 
+
+  // GET TASKS
+
   getTasks(): Observable<Task[]> {
     // const tasks = of (TASKS);
     // return tasks
     return this.http.get<Task[]>(this.apiUrl);
   }
 
+  // DELETE TASKS
+
   deleteTask(task: Task): Observable<Task[]> {
     const url = `${this.apiUrl}/${task.id}`
     return this.http.delete<Task[]>(url);
   }
 
-  updateTaskReminder(task: Task): Observable<Task[]>{
+  // UPDATE TASKS REMINDER
+
+  updateTaskReminder(task: Task): Observable<Task[]> {
     const url = `${this.apiUrl}/${task.id}`
-    return this.http.put<Task[]>(url,task,httpOptions)
+    return this.http.put<Task[]>(url, task, httpOptions)
   }
 
-  addTask(task:Task): Observable<Task[]>{
-     return this.http.post<Task[]>(this.apiUrl,task,httpOptions)
+  // ADD TASKS
+
+  addTask(task: Task): Observable<Task[]> {
+    return this.http.post<Task[]>(this.apiUrl, task, httpOptions)
   }
 }
